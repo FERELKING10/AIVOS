@@ -1,0 +1,38 @@
+name: Build APK armv8
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '11'
+
+      - uses: subosito/flutter-action@v2
+        with:
+          flutter-version: 'latest'
+          channel: 'stable'
+
+      - name: Get dependencies
+        run: flutter pub get
+
+      - name: Build APK armv8
+        run: flutter build apk --target-platform android-arm64 --release --split-per-abi
+
+      - name: Upload APK
+        uses: actions/upload-artifact@v3
+        with:
+          name: apk-arm64-v8a
+          path: build/app/outputs/apk/release/*.apk
+          retention-days: 30
