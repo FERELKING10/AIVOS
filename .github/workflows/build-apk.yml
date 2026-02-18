@@ -23,6 +23,9 @@ jobs:
         with:
           channel: 'stable'
 
+      - name: Clean Gradle cache
+        run: rm -rf ~/.gradle/caches
+
       - name: Get dependencies
         run: flutter pub get
 
