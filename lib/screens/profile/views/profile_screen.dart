@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:shop/components/list_tile/divider_list_tile.dart';
-import 'package:shop/components/network_image_with_loader.dart';
-import 'package:shop/constants.dart';
-import 'package:shop/route/screen_export.dart';
+import 'package:aivo/components/list_tile/divider_list_tile.dart';
+import 'package:aivo/components/network_image_with_loader.dart';
+import 'package:aivo/constants.dart';
+import 'package:aivo/route/screen_export.dart';
 
 import 'components/profile_card.dart';
 import 'components/profile_menu_item_list_tile.dart';
@@ -17,8 +17,8 @@ class ProfileScreen extends StatelessWidget {
       body: ListView(
         children: [
           ProfileCard(
-            name: "Sepide",
-            email: "theflutterway@gmail.com",
+            name: "User",
+            email: "user@aivo.app",
             imageSrc: "https://i.imgur.com/IXnwbLk.png",
             // proLableText: "Sliver",
             // isPro: true, if the user is pro

@@ -1,216 +1,202 @@
-# Flutter E-Commerce App Template
+# AIVO - E-Commerce Mobile App
 
 <p align="center">
-  <img src="readme%20image/Build%20you%20shop%20app%20in%20days.png" alt="Build you shop app in days" style="width: 500px; height: auto;">
+  <img src="readme%20image/Build%20you%20shop%20app%20in%20days.png" alt="AIVO E-Commerce App" style="width: 500px; height: auto;">
 </p>
 
 <p align="center">
-  The FlutterShop template makes it easier to develop an e-commerce app using Flutter. It includes all the necessary pages to build a shopping app for both Android and iOS using flutter.
+  AIVO is a modern, feature-rich e-commerce mobile application built with Flutter. Designed for both Android and iOS, AIVO provides a seamless shopping experience with 100+ carefully crafted screens covering all essential e-commerce functionality.
 </p>
 
-<!-- Buttons -->
-<p align="center">
-  <a href="https://cutt.ly/fefxdqE9" style="text-decoration: none;" target="_blank">
-    <img src="readme image/buy_now_btn.png" alt="Full template" style="margin-right: 32px; width: 170px; height: 50px;">
-  </a>
-  &nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="https://cutt.ly/1efxdynN" style="text-decoration: none;" target="_blank">
-    <img src="readme image/preview_btn.png" alt="Preview" style="width: 136px; height: 50px;">
-  </a>
-</p>
+## Features
 
-<!-- Device image -->
-</br >
-</br >
-<p align="center">
-  <img src="readme image/Device_frame.png" alt="Ecommerce app Home, product details page" style="width: 1100px; height: auto;">
-</p>
-</br >
-</br >
+AIVO includes a comprehensive set of features and screens:
 
-This shop app template comes with 100+ screens. Some of these pages are Splash, Login, Signup, Home, Product, Search, Cart, Profile, Payment, Wallet, Order Tracking, and Order History. Additionally, all pages support both light and dark themes.You just need to connect the UI to your preferred backend, such as Firebase, WordPress, or your custom API. You can do anything you want with it.
+### Core Functionality
+- **Onboarding & Authentication** - Welcome screens, login, signup, and password recovery
+- **Product Browsing** - Intuitive product search, filters, and discovery
+- **Shopping Cart** - Manage items with ease
+- **Checkout** - Streamlined payment and order process
+- **Order Tracking** - Track your orders in real-time
+- **User Profile** - Manage account, addresses, and preferences
+- **Wallet & Payments** - Secure payment methods and balance management
 
-<!-- Gif preview -->
-</br >
-</br >
-<p align="center">
-  <img src="readme image/FlutterShop_Intro.gif" alt="Build you shop app in days" style="width: 643px; height: auto;">
-</p>
-</br >
-</br >
+### UI Components
+- **100+ Screens** - Comprehensive screen library covering all shopping scenarios
+- **Light & Dark Themes** - Full theme support for both light and dark modes
+- **Custom Loading States** - Elegant skeleton loaders for better UX
+- **Responsive Design** - Optimized for all device sizes and orientations
 
-### Well organized project very easy to customize
+### Navigation
+- **Bottom Navigation** - Easy access to main sections (Home, Discover, Bookmarks, Cart, Profile)
+- **Smooth Transitions** - Polished page transitions and animations
+- **Deep Linking** - Complete routing system with named routes
 
-![FlutterShop E-commerce Template Project Structure](https://public-files.gumroad.com/v1kbfvdugf3urvw03qrqgmc5pl1c)
+## Architecture
 
-<!-- Full preview -->
-</br >
-</br >
-<p align="center">
-  <img src="https://public-files.gumroad.com/m3v3lyyipbzczcws5gcuhpbkmczk" alt="Build you shop app in days" style="width: 100%; height: auto;">
-</p>
+The project is organized with a clean, modular structure:
 
-### Loading is no longer boring [New update V1.1] [Doc](https://abu-anwar.gitbook.io/fluttershop-doc/custom-loading)
+```
+lib/
+├── components/        # Reusable UI components
+├── models/           # Data models
+├── screens/          # Screen pages (organized by feature)
+├── route/            # Navigation and routing
+├── theme/            # Theme and styling
+├── constants.dart    # App constants
+├── main.dart         # App entry point
+└── entry_point.dart  # Main navigation controller
+```
 
-The progress indicator that comes with Flutter, by default is okay in most places, but not in every place. Especially when you build an ecommerce app. This is why we have created a custom loading effect that boosts your user engagement even during the loading process. This kind of loading is common in popular apps like YouTube and LinkedIn. It's a small detail, but it makes a big difference.
-![FlutterShop Custom loading](https://public-files.gumroad.com/qqnmt9nu5677thkq1961tlwj405u)
+## Screens Included
 
-## Screens on the FlutterShop E-commerce Template
+### Auth & Onboarding
+- Onboarding carousel
+- Login & Sign up
+- Password recovery
+- Terms & conditions
 
-As mentioned, this kit contains 100+ nicely crafted minimal screens that cover everything you need!👇
+### Main Navigation
+- **Home** - Featured products and offers
+- **Discover** - Browse categories
+- **Bookmarks** - Saved items
+- **Cart** - Shopping cart management
+- **Profile** - User account
 
-### Onboarding
+### Product Pages
+- Product details with reviews
+- Product gallery
+- Shipping information
+- Returns policy
+- Size guide
+- Store availability
 
-- Onboarding Choose item
-- Onboarding Add to cart
-- Onboarding Pay online
-- Onboarding Track order
-- Onboarding Find store
-- Notification permission
-- Select language
+### Checkout & Orders
+- Cart review
+- Address selection
+- Payment methods
+- Order confirmation
+- Order tracking
+- Order history
 
-### Authentication
+### User Management
+- Profile editing
+- Address management
+- Notification settings
+- Payment methods
+- Wallet management
+- Help & support
 
-- Log in
-- Forgot password
-  - Choose verification method
-  - Verification code
-- Set new password
-- Done reset password
-- Sign up
-  - Setup profile
-  - Verification code
-- Successfully sign up
-- Terms and conditions
-- Enable fingerprint
-- Enable face ID
+## Technology Stack
 
-### Product
+- **Flutter** - Cross-platform mobile framework
+- **Dart** - Programming language
+- **Material Design** - UI design system
+- **Custom Animations** - Smooth transitions and effects
 
-- Product page
-  - Notify when available (Out of stock)
-  - Buy Now
-  - Product details
-  - Product reviews
-  - Add review
-  - Shipping methods
-  - Product return policy
-  - Product size guide
-  - Store Pickup Availability
-  - Added to cart message
-  - Product gallery (Will be added soon)
+## Getting Started
 
-### Main Page
+### Prerequisites
+- Flutter 3.2.0 or higher
+- Dart 3.0.0 or higher
+- Android SDK 21+ or iOS 12+
 
-- Home page
-- On sales page
-- Kids product page
-- Brand page
-- Discover Page (Categories)
-  - Style 1
-  - Style 2 (Will be added soon)
-  - Style 3 (Will be added soon)
-- Bookmark products page
+### Installation
 
-### Search
+1. Clone the repository
+```bash
+git clone <repository-url>
+cd AIVOS
+```
 
-- Recent search (Search history)
-- Search suggestions
-- Search filters
-  - Size filter
-  - Color filter
-  - Brand filter
-  - Price filter
-  - Sort by
-- Search results
-  - Product not found
+2. Install dependencies
+```bash
+flutter pub get
+```
 
-### Cart
+3. Run the app
+```bash
+flutter run
+```
 
-- Products on Cart
-- Empty cart
-- Choose address
-- Review & payment
-- Checkout / Payment method
-  - Select card
-  - Pay with cash
-  - Use credit
-- Thanks for order
-- Add new card
-- Scan card (Will be added soon)
+## Development
 
-### Profile
+### Building
 
-- Account
-  - Normal version
-  - Pro version
-  - Profile
-    - Edit profile
-  - Notifications
-    - Empty notification
-    - Enable notification
-    - Notification options
-  - Select Language
-  - Addresses
-    - Empty address
-    - Add new address
-  - Add number
-    - Verification code
-  - Selected location
-  - Payment
-    - Cards
-    - Empty payment
-  - Wallet
-    - Empty Wallet
-    - Wallet history
-  - Help & Chat (Support)
-    - Chat
-  - Preferences
+Build an Android APK:
+```bash
+flutter build apk --release
+```
 
-### Order
+Build an iOS app:
+```bash
+flutter build ios --release
+```
 
-- Account Orders
-  - Processing orders
-    - Cancel order
-  - Canceled orders
-  - Delivered orders
-  - Return orders (Will be added soon)
-  - More screens added in that sector soon
+### Customization
 
-### Return & Request (Will be added soon)
+The app is highly customizable:
+- **Colors & Branding** - Update in `lib/theme/app_theme.dart`
+- **Assets** - Add your images to `assets/images/`
+- **Strings** - Centralize text in constants or use localization
+- **API Integration** - Connect to your backend in the data models
 
-- Return order list
-- Empty return order
-- Return order
-- Return detail
+## Project Structure Details
 
-### Error & Permission
+### /lib/components
+Reusable UI components used across screens:
+- Product cards and variations
+- Banner components
+- Loading skeletons
+- Modal dialogs
 
-- Notification permission
-- No notification
-- Select language
-- No internet
-- Server error
-- Location permissions
-- No search result
-- Empty order list
-- No Address found
-- Empty payment
-- Empty wallet
+### /lib/screens
+Organized by feature domain:
+- `home/` - Home page components
+- `product/` - Product detail screens
+- `auth/` - Authentication flow
+- `checkout/` - Cart and payment flow
+- `profile/` - User account screens
+- And more...
 
-and MORE!!!! 🤩
+### /lib/theme
+Application theming:
+- `app_theme.dart` - Theme configuration
+- Light and dark theme colors
+- Typography settings
 
-If you want to learn how to build ecommerce template on Flutter [watch the playlist on YouTube](https://youtube.com/playlist?list=PLxUBb2A_UUy8OlaNZpS2mfL8xpHcnd_Af), In the first video, we start by making a neat onboarding screen for our shopping app. This works on both Android and iOS because it's made with Flutter. In the next video, we tackle the 'Sign In' and 'Forgot Password' screens, adding some unique error messages. The third video covers the 'Sign Up' and OTP processes. The fourth one is fun – we create the main homepage. In the fifth, we dive into the product page, and in the sixth, we craft an order page with cool features like 'swipe to delete.' Finally, in the seventh video, we design the user profile page.
+### /lib/route
+Navigation management:
+- `router.dart` - Route generation logic
+- `route_constants.dart` - Route path constants
+- `screen_export.dart` - Screen imports
 
-Visit FlutterLibrary.com to Download the [Flutter e-commerce app template](https://www.flutterlibrary.com/templates/e-commerce-app) & other templates, and components.
+## Performance Optimization
 
+- Skeleton loading states for smoother UX
+- Cached image loading
+- Efficient list rendering with builders
+- Optimized page transitions
 
+## Future Enhancements
 
-</br >
-</br >
-<!-- Buttons -->
-<p align="center">
-  <a href="https://app.gumroad.com/checkout?product=uxznc&option=B3wWhE6QH46cfm31C7jEmQ%3D%3D&quantity=1&referrer=https://github.com" style="text-decoration: none;" target="_blank">
-    <img src="readme image/buy_now_btn.png" alt="Full template" style="margin-right: 32px; width: 170px; height: 50px;">
-  </a>
-</p>
+Potential areas for expansion:
+- Backend API integration
+- User authentication with Firebase
+- Real-time notifications
+- Advanced search and filtering
+- Social features (reviews, ratings, recommendations)
+- Multi-language support
+- Payment gateway integration
+
+## License
+
+This project is proprietary and confidential.
+
+## Support
+
+For questions or support, please refer to the project documentation or contact the development team.
+
+---
+
+**Built with ❤️ using Flutter**

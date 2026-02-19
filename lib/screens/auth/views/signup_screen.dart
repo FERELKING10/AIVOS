@@ -1,7 +1,7 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:shop/screens/auth/views/components/sign_up_form.dart';
-import 'package:shop/route/route_constants.dart';
+import 'package:aivo/screens/auth/views/components/sign_up_form.dart';
+import 'package:aivo/route/route_constants.dart';
 
 import '../../../constants.dart';
 
@@ -78,9 +78,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   const SizedBox(height: defaultPadding * 2),
                   ElevatedButton(
                     onPressed: () {
-                      // There is 2 more screens while user complete their profile
-                      // afre sign up, it's available on the pro version get it now
-                      // 🔗 https://theflutterway.gumroad.com/l/fluttershop
                       Navigator.pushNamed(context, entryPointScreenRoute);
                     },
                     child: const Text("Continue"),

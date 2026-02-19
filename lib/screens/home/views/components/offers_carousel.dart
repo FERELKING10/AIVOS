@@ -1,11 +1,9 @@
-import 'dart:async';
-
 import 'package:flutter/material.dart';
-import 'package:shop/components/Banner/M/banner_m_style_1.dart';
-import 'package:shop/components/Banner/M/banner_m_style_2.dart';
-import 'package:shop/components/Banner/M/banner_m_style_3.dart';
-import 'package:shop/components/Banner/M/banner_m_style_4.dart';
-import 'package:shop/components/dot_indicators.dart';
+import 'package:aivo/components/Banner/M/banner_m_style_1.dart';
+import 'package:aivo/components/Banner/M/banner_m_style_2.dart';
+import 'package:aivo/components/Banner/M/banner_m_style_3.dart';
+import 'package:aivo/components/Banner/M/banner_m_style_4.dart';
+import 'package:aivo/components/dot_indicators.dart';
 
 import '../../../../constants.dart';
 
@@ -21,10 +19,8 @@ class OffersCarousel extends StatefulWidget {
 class _OffersCarouselState extends State<OffersCarousel> {
   int _selectedIndex = 0;
   late PageController _pageController;
-  late Timer _timer;
 
-  // Offers List
-  List offers = [
+  final List offers = [
     BannerMStyle1(
       text: "New items with \nFree shipping",
       press: () {},
@@ -41,7 +37,6 @@ class _OffersCarouselState extends State<OffersCarousel> {
       press: () {},
     ),
     BannerMStyle4(
-      // image: , user your image
       title: "SUMMER \nSALE",
       subtitle: "SPECIAL OFFER",
       discountParcent: 80,
@@ -51,27 +46,13 @@ class _OffersCarouselState extends State<OffersCarousel> {
 
   @override
   void initState() {
-    _pageController = PageController(initialPage: 0);
-    _timer = Timer.periodic(const Duration(seconds: 4), (Timer timer) {
-      if (_selectedIndex < offers.length - 1) {
-        _selectedIndex++;
-      } else {
-        _selectedIndex = 0;
-      }
-
-      _pageController.animateToPage(
-        _selectedIndex,
-        duration: const Duration(milliseconds: 350),
-        curve: Curves.easeOutCubic,
-      );
-    });
     super.initState();
+    _pageController = PageController(initialPage: 0);
   }
 
   @override
   void dispose() {
     _pageController.dispose();
-    _timer.cancel();
     super.dispose();
   }
 
