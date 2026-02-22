@@ -16,7 +16,13 @@ class _LoginScreenState extends State<LoginScreen> {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
   String? _errorMessage;
-  final GlobalKey _formWidgetKey = GlobalKey();
+  late GlobalKey<_LogInFormState> _formWidgetKey;
+
+  @override
+  void initState() {
+    super.initState();
+    _formWidgetKey = GlobalKey<_LogInFormState>();
+  }
 
   void _showErrorSnackBar(String message) {
     ScaffoldMessenger.of(context).showSnackBar(

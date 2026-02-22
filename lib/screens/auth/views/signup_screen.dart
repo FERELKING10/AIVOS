@@ -17,7 +17,13 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
   bool _isLoading = false;
   String? _errorMessage;
-  final GlobalKey _formWidgetKey = GlobalKey();
+  late GlobalKey<_SignUpFormState> _formWidgetKey;
+
+  @override
+  void initState() {
+    super.initState();
+    _formWidgetKey = GlobalKey<_SignUpFormState>();
+  }
 
   void _showErrorSnackBar(String message) {
     ScaffoldMessenger.of(context).showSnackBar(

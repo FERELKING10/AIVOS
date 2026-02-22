@@ -107,8 +107,8 @@ class ProductModel {
   }
 
   // Backward compatibility getters
-  String? get image => imageUrl;
-  String? get brandName => brand;
+  String get image => imageUrl ?? '';
+  String get brandName => brand ?? '';
 }
 
 List<ProductModel> demoPopularProducts = [
