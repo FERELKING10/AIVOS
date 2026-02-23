@@ -12,22 +12,27 @@ import 'package:aivo/services/supabase_auth_service.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  // Initialize Supabase
-  await dotenv.load();
-  final supabaseUrl = dotenv.env['SUPABASE_URL']!;
-  final supabaseKey = dotenv.env['SUPABASE_PUBLISH_KEY']!;
+  try {
+    // Initialize Supabase - try to load .env if it exists
+    await dotenv.load();
+    final supabaseUrl = dotenv.env['SUPABASE_URL'];
+    final supabaseKey = dotenv.env['SUPABASE_PUBLISH_KEY'];
 
-  await Supabase.initialize(
-    url: supabaseUrl,
-    anonKey: supabaseKey,
-  );
+    // Only initialize Supabase if env vars are present
+    if (supabaseUrl != null && supabaseKey != null) {
+      await Supabase.initialize(
+        url: supabaseUrl,
+        anonKey: supabaseKey,
+      );
 
-  // Initialize Auth Service
-  final authService = SupabaseAuthService();
-  await authService.init();
-
-  // Explore database structure
-  await exploreSupabase();
+      // Initialize Auth Service
+      final authService = SupabaseAuthService();
+      await authService.init();
+    }
+  } catch (e) {
+    // Supabase optional - app can work without it
+    print('Supabase initialization skipped: $e');
+  }
 
   runApp(const MyApp());
 }
