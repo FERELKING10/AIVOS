@@ -158,7 +158,7 @@ class _LoginScreenState extends State<LoginScreen> {
                       ),
                     ),
 
-                  LogInForm(key: _formWidgetKey, formKey: _formKey, formWidgetKey: _formWidgetKey),
+                  LogInForm(key: _formWidgetKey, formKey: _formKey),
                   Align(
                     child: TextButton(
                       onPressed: _isLoading

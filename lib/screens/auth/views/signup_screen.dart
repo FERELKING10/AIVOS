@@ -159,7 +159,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ),
                     ),
 
-                  SignUpForm(key: _formWidgetKey, formKey: _formKey, formWidgetKey: _formWidgetKey),
+                  SignUpForm(key: _formWidgetKey, formKey: _formKey),
                   const SizedBox(height: defaultPadding),
                   Row(
                     children: [
