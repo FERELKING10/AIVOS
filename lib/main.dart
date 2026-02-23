@@ -14,38 +14,41 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   // Initialize logger service
-  final logger = LoggerService();
-  await logger.init();
-
-  // Debug: Print environment configuration
-  logger.i('=== AIVO App Startup ===');
-  logger.i('Supabase URL: ${Environment.supabaseUrl.isEmpty ? '❌ NOT SET' : '✅ ${Environment.supabaseUrl}'}');
-  logger.i('Supabase Key: ${Environment.supabasePublishableKey.isEmpty ? '❌ NOT SET' : '✅ ${Environment.supabasePublishableKey.substring(0, 20)}...'}');
-  logger.i('Supabase Configured: ${Environment.isSupabaseConfigured ? '✅ YES' : '❌ NO'}');
-  logger.i('Log file: ${await logger.getLogPath()}');
-  logger.i('========================\n');
-
   try {
-    // Initialize Supabase only if credentials are provided via dart-define
-    if (Environment.isSupabaseConfigured) {
-      logger.i('🔄 Initializing Supabase...');
-      await Supabase.initialize(
-        url: Environment.supabaseUrl,
-        anonKey: Environment.supabasePublishableKey,
-      );
-      logger.i('✅ Supabase initialized successfully');
+    final logger = LoggerService();
+    await logger.init();
 
-      // Initialize Auth Service
-      final authService = SupabaseAuthService();
-      await authService.init();
-      logger.i('✅ Auth service initialized');
-    } else {
-      logger.w('⚠️ Supabase not configured. Build with --dart-define flags.');
-      logger.w('flutter build apk --dart-define=SUPABASE_URL=... --dart-define=SUPABASE_PUBLISHABLE_KEY=...');
+    // Debug: Print environment configuration
+    logger.i('=== AIVO App Startup ===');
+    logger.i('Supabase URL: ${Environment.supabaseUrl.isEmpty ? 'NOT SET' : Environment.supabaseUrl}');
+    logger.i('Supabase Key: ${Environment.supabasePublishableKey.isEmpty ? 'NOT SET' : Environment.supabasePublishableKey.substring(0, 20)}...');
+    logger.i('Supabase Configured: ${Environment.isSupabaseConfigured}');
+    logger.i('Log file: ${await logger.getLogPath()}');
+
+    try {
+      // Initialize Supabase only if credentials are provided via dart-define
+      if (Environment.isSupabaseConfigured) {
+        logger.i('Initializing Supabase...');
+        await Supabase.initialize(
+          url: Environment.supabaseUrl,
+          anonKey: Environment.supabasePublishableKey,
+        );
+        logger.i('Supabase initialized successfully');
+
+        // Initialize Auth Service
+        final authService = SupabaseAuthService();
+        await authService.init();
+        logger.i('Auth service initialized');
+      } else {
+        logger.w('Supabase not configured. Build with --dart-define flags.');
+      }
+    } catch (e) {
+      // Supabase optional - app can work without it
+      logger.e('Supabase initialization failed: $e', e);
     }
-  } catch (e) {
-    // Supabase optional - app can work without it
-    logger.e('❌ Supabase initialization failed: $e', e);
+  } catch (e, st) {
+    print('FATAL ERROR: Failed to initialize logger or Supabase: $e');
+    print('Stack trace: $st');
   }
 
   runApp(const MyApp());

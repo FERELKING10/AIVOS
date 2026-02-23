@@ -1,12 +1,11 @@
 import 'dart:io';
-import 'package:logger/logger.dart';
 import 'package:path_provider/path_provider.dart';
 
 class LoggerService {
   static final LoggerService _instance = LoggerService._internal();
-  late Logger _logger;
   late File _logFile;
   late StringBuffer _logBuffer;
+  late String _logPath;
 
   LoggerService._internal();
 
@@ -26,34 +25,40 @@ class LoggerService {
       }
 
       final timestamp = DateTime.now().toString().replaceAll(':', '-').split('.')[0];
-      _logFile = File('${logsDir.path}/aivo_$timestamp.log');
+      _logPath = '${logsDir.path}/aivo_$timestamp.log';
+      _logFile = File(_logPath);
 
-      _logger = Logger(
-        printer: PrettyPrinter(
-          methodCount: 2,
-          errorMethodCount: 8,
-          lineLength: 120,
-          colors: true,
-          printEmojis: true,
-        ),
-        output: _FileOutput(_logFile, _logBuffer),
-      );
-
-      i('=== AIVO Logger Service Initialized ===');
+      // Write initial message
+      _write('[INIT] Logger service initialized at $_logPath');
     } catch (e) {
-      print('❌ Failed to initialize logger: $e');
-      _logger = Logger();
+      print('ERROR: Failed to initialize logger: $e');
+      _logPath = '/data/unknown';
     }
   }
 
-  void i(String message) => _logger.i(message);
-  void d(String message) => _logger.d(message);
-  void e(String message, [dynamic error, StackTrace? stackTrace]) =>
-      _logger.e(message, error: error, stackTrace: stackTrace);
-  void w(String message) => _logger.w(message);
+  void _write(String message) {
+    final timestamp = DateTime.now().toString();
+    final logLine = '[$timestamp] $message\n';
+
+    _logBuffer.write(logLine);
+
+    try {
+      _logFile.writeAsStringSync(_logBuffer.toString());
+    } catch (e) {
+      print('ERROR writing log: $e');
+    }
+  }
+
+  void i(String message) => _write('[INFO] $message');
+  void d(String message) => _write('[DEBUG] $message');
+  void e(String message, [dynamic error, StackTrace? stackTrace]) {
+    final errorStr = error != null ? '\n$error' : '';
+    _write('[ERROR] $message$errorStr');
+  }
+  void w(String message) => _write('[WARN] $message');
 
   Future<String> getLogPath() async {
-    return _logFile.path;
+    return _logPath;
   }
 
   Future<String> getLogContent() async {
@@ -61,29 +66,6 @@ class LoggerService {
       return await _logFile.readAsString();
     } catch (e) {
       return 'Error reading log file: $e';
-    }
-  }
-}
-
-class _FileOutput extends LogOutput {
-  final File logFile;
-  final StringBuffer logBuffer;
-
-  _FileOutput(this.logFile, this.logBuffer);
-
-  @override
-  void output(OutputEvent event) {
-    for (var line in event.lines) {
-      logBuffer.writeln(line);
-    }
-    _writeToFile();
-  }
-
-  void _writeToFile() {
-    try {
-      logFile.writeAsStringSync(logBuffer.toString());
-    } catch (e) {
-      print('❌ Error writing to log file: $e');
     }
   }
 }
