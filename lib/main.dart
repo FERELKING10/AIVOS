@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
-import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
+import 'package:aivo/config/environment.dart';
 import 'package:aivo/core/localization/localization_provider.dart';
 import 'package:aivo/route/route_constants.dart';
 import 'package:aivo/route/router.dart' as router;
@@ -13,25 +13,23 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
   try {
-    // Initialize Supabase - try to load .env if it exists
-    await dotenv.load();
-    final supabaseUrl = dotenv.env['SUPABASE_URL'];
-    final supabaseKey = dotenv.env['SUPABASE_PUBLISH_KEY'];
-
-    // Only initialize Supabase if env vars are present
-    if (supabaseUrl != null && supabaseKey != null) {
+    // Initialize Supabase only if credentials are provided via dart-define
+    if (Environment.isSupabaseConfigured) {
       await Supabase.initialize(
-        url: supabaseUrl,
-        anonKey: supabaseKey,
+        url: Environment.supabaseUrl,
+        anonKey: Environment.supabaseAnonKey,
       );
 
       // Initialize Auth Service
       final authService = SupabaseAuthService();
       await authService.init();
+    } else {
+      print('⚠️ Supabase not configured. Build with --dart-define flags.');
+      print('flutter build apk --dart-define=SUPABASE_URL=... --dart-define=SUPABASE_ANON_KEY=...');
     }
   } catch (e) {
     // Supabase optional - app can work without it
-    print('Supabase initialization skipped: $e');
+    print('❌ Supabase initialization failed: $e');
   }
 
   runApp(const MyApp());
