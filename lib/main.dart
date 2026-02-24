@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:supabase_flutter/supabase_flutter.dart';
-import 'package:aivo/config/environment.dart';
+import 'package:aivo/config/supabase_config.dart';
 import 'package:aivo/core/localization/localization_provider.dart';
 import 'package:aivo/route/route_constants.dart';
 import 'package:aivo/route/router.dart' as router;

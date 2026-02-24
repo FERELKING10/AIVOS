@@ -101,7 +101,7 @@ const String supabaseUrl = String.fromEnvironment('SUPABASE_URL', defaultValue: 
 const String supabasePublishableKey = String.fromEnvironment('SUPABASE_PUBLISHABLE_KEY', defaultValue: '');
 ```
 
-See `lib/config/environment.dart` for the complete configuration class.
+
 
 ---
 
@@ -123,7 +123,7 @@ The app gracefully handles missing Supabase configuration and shows a warning.
 
 ## 📚 Files Modified for Secrets Management
 
-- `lib/config/environment.dart` - Environment configuration class
+
 - `lib/main.dart` - Updated initialization logic
 - `.github/workflows/build-apk.yml` - CI/CD with GitHub Secrets
 - `pubspec.yaml` - Removed `flutter_dotenv` dependency
