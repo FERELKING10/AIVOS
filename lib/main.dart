@@ -22,11 +22,11 @@ void main() async {
   }
 
   // Initialize Supabase FIRST - auth services depend on this
-  if (supabaseUrl.isNotEmpty && supabasePublishableKey.isNotEmpty) {
+  if (supabaseUrl.isNotEmpty && supabaseAnonKey.isNotEmpty) {
     try {
       await Supabase.initialize(
         url: supabaseUrl,
-        anonKey: supabasePublishableKey,
+        anonKey: supabaseAnonKey,
       );
       print('[STARTUP] Supabase initialized');
     } catch (e) {
